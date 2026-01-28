@@ -27,7 +27,34 @@ public class Clase_26012026 {
         String cadena;
         
         //variables por referencia 
-       Humano Diego = new Humano();
+       Humano p = new Humano();
+       
+       Humano q = p;
+       p.nombre = "Juan"; // p es un objeto, nombre es la propiedad dentro de la clase humano 
+       numero = 1;
+       double alturaP= p.getAltura();
+      
+       
+       q.nombre = "Pedro";
+        System.out.println("Por referencia ");
+       System.out.println( p.nombre );
+       System.out.println( q.nombre );
+        System.out.println(numero);
+       
+       String p1 = "juan";
+       String q2 = p1;
+       
+       p1 = "Juan";
+       q2 = "Pedro";
+        System.out.println("Por valor");
+        System.out.println(p1);
+        System.out.println(q2);
+       
+             
+       CuentaBancaria macheBac = new CuentaBancaria();
+        System.out.println(macheBac);
+//       macheBac.realizarRetiro("1234");
+               
        
        
        /*
