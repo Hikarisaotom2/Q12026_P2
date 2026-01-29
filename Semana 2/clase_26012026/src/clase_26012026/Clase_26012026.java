@@ -18,9 +18,9 @@ public class Clase_26012026 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       //Clases y objetos
-       // TipoDeDato nombreVariable = valorInical;
-       int numero = 1;
+        //Clases y objetos
+        // TipoDeDato nombreVariable = valorInical;
+        /* int numero = 1;
       
        char caracter;
        
@@ -34,6 +34,7 @@ public class Clase_26012026 {
        numero = 1;
        double alturaP= p.getAltura();
       
+ 
        
        q.nombre = "Pedro";
         System.out.println("Por referencia ");
@@ -51,13 +52,10 @@ public class Clase_26012026 {
         System.out.println(q2);
        
              
-       CuentaBancaria macheBac = new CuentaBancaria();
-        System.out.println(macheBac);
-//       macheBac.realizarRetiro("1234");
-               
-       
-       
-       /*
+
+         */
+
+ /*
        UTILIDAD DE LAS CLASES Y OBJETOS
        
        clase: para crear nuevos tipos de datos. 
@@ -98,10 +96,8 @@ public class Clase_26012026 {
        PascalCase -> MiVariableBonitaDificilDeLeer
        kebab-case ->mi-variable-bonita-dificil-de-leer && no aplica en java 
        
-       */
-       
-       
-       /*
+         */
+ /*
        Mini RNP
        ->  registrar una persona 
        -> registrar una defuncion 
@@ -115,13 +111,18 @@ public class Clase_26012026 {
        Create
        Read
        Update
-       Delet
+       Delete
        
-       */
-       
-         
+         */
+ 
+        CuentaBancaria sozaBac = new CuentaBancaria(5000, "Maria Jose");
+        CuentaBancaria macheBac = new CuentaBancaria(5000, "Maria Jose", "2026");
+
+        macheBac.realizarRetiro("2026");
+        
+        System.out.println(macheBac.toString());
+        System.out.println(macheBac);
+
     }
-    
-    
-    
+
 }
