@@ -10,34 +10,29 @@ package clase_28012926_minirnp;
  */
 public class Persona {
     // Propiedades
-    private String dni;
+    private String dni; // valor de solo lectura 
     private String nombre;
-    private char SexoBio;
+    private char sexoBio;
     private int edad;
     
     //Constructor 
     public Persona(String dni, String nombre, char SexoBio, int edad) {    
         this.dni = dni;
         this.nombre = nombre;
-        this.SexoBio = SexoBio;
+        this.sexoBio = SexoBio;
         this.edad = edad;
     }
 
     public Persona(String dni, String nombre, char SexoBio) {
         this.dni = dni;
         this.nombre = nombre;
-        this.SexoBio = SexoBio;
-    }
-    
-    
+        this.sexoBio = SexoBio;
+        this.edad = 0;
+    }    
 
     // Metodos
     public String getDni() {
         return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
     }
 
     public String getNombre() {
@@ -49,11 +44,11 @@ public class Persona {
     }
 
     public char getSexoBio() {
-        return SexoBio;
+        return sexoBio;
     }
 
-    public void setSexoBio(char SexoBio) {
-        this.SexoBio = SexoBio;
+    public void setSexoBio(char sexoBio) {
+        this.sexoBio = sexoBio;
     }
 
     public int getEdad() {
@@ -66,7 +61,7 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" + "dni=" + dni + ", nombre=" + nombre + ", SexoBio=" + SexoBio + ", edad=" + edad + '}';
+        return dni+"- "+nombre +"("+sexoBio+") "+ edad;
     }
     
 }
