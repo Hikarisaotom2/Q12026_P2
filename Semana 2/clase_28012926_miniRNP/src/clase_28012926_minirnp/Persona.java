@@ -16,6 +16,7 @@ public class Persona {
     private int edad;
     
     //Constructor 
+    
     public Persona(String dni, String nombre, char SexoBio, int edad) {    
         this.dni = dni;
         this.nombre = nombre;

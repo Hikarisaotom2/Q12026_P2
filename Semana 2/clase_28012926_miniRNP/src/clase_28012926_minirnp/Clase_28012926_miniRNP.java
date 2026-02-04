@@ -103,4 +103,13 @@ public class Clase_28012926_miniRNP {
        
     }
     
+    
+    /*
+    1) comenzar con una letra 
+    2) en el cuerpo de la variable nosostros pdoemos agregar letras, numeros, simbolos 
+    3) el unico simbolo permitido es el _ 
+    */
+    
+    int 9hola = 9;
+    
 }// fin de la clase
