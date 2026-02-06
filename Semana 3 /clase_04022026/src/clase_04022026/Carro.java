@@ -54,6 +54,7 @@ public class Carro {
 
     @Override
     public String toString() {
+        
         return "Carro{" + "tipo=" + tipo + ", color=" + color + ", saldo=" + saldo + ", pagado=" + pagado + ", x=" + x + ", y=" + y + ", id=" + id + '}';
     }
 

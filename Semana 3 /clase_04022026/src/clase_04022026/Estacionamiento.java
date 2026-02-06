@@ -47,7 +47,7 @@ public class Estacionamiento {
             System.out.println("La posicion esta vacia, se puede estacionar");
             return true;
         }else{
-            System.out.println("La psoicion esta ocupada");
+            System.out.println("La psoicion esta ocupada,no podemos estacionarnos");
             return false;
         }
     }
