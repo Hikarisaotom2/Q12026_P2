@@ -23,6 +23,28 @@ public class Clase_09022026 {
         2) del tipo de dato del padre
         */
        
+       /*
+       CRUD DE HOSPITAL 
+       -> crear pacientes 
+       -> Femenino 
+       -> Masculino 
+       Nota: dependiendo del tipo de paciente,podemos preguntar diferentes preguntas.
+       -> Ver pacientes 
+          -> Todos los pacientes 
+          -> Pacientes femeninos 
+          -> Pacientes masculinos 
+       -> Actualizar  
+       Nota: eL [ROGRAMA, SOLAMENTE DEBE PREGUNTAR A QUE PACIENTE DESEA ACTUALIZAR ,
+       EL PROGRAMA AUTOMATICAMENTE DEBE RECONOCER SI ESE PACIENTE ES DEL TIPO MASCULINO O FEMENINO 
+       Dependiendo de eso, se mostrara un submenu distinto.
+        si se detecta que el paciente es del tipo masculino, deben aparecer las opciones para actualizar las propiedades masculinas
+       -> Eliminar un paciente de la lista 
+       -> Busqueda de pacientes por nombre y apellido. 
+         -> si se encontro: 
+            mostrar datos del paciente (en ficha tecnica)
+           -> sino se encontro, mostrar un mensaje de paciente no encontrado 
+       
+       */       
        PacienteFemenino claudia = new PacienteFemenino("Claudia","Cortes","O+",false,"Enero");
        
        
@@ -60,10 +82,12 @@ public class Clase_09022026 {
             Casteo: conversion de datos explicita
             (Tipo de dato al que queremos convertir)Variable que contiene el objeto
             */
+            
             PacienteFemenino pacienteMujer = (PacienteFemenino)pacienteActualizar;
+            // actualizar la informacion que sea necesaria
             pacienteMujer.setEmbarazo(true);
             
-//            ((PacienteFemenino) pacienteActualizar).setEmbarazo(true);
+//           Ejemplo de casteo: ((PacienteFemenino) pacienteActualizar).getUltimoPeriodoMenstrual();
             
         }else if(pacienteActualizar instanceof PacienteMasculino){
             System.out.println("Es un hombre");
