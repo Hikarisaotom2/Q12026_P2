@@ -27,7 +27,6 @@ public class Principal extends javax.swing.JFrame {
         jcb_editarUsuarios.setModel(modelo);
         jcb_comboBoxEliminar.setModel(modelo);
         jcb_comboBoxMostrar.setModel(modelo);
-           
     }
 
     /**
@@ -55,6 +54,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jcb_comboBoxEditar = new javax.swing.JComboBox<>();
         jcb_editarUsuarios = new javax.swing.JComboBox<>();
+        btn_actualizarDatos = new javax.swing.JButton();
         jp_mostrar = new javax.swing.JPanel();
         lbl_mostrar = new javax.swing.JLabel();
         lbl_mostrarNombre = new javax.swing.JLabel();
@@ -125,6 +125,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jcb_comboBoxEliminar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcb_comboBoxEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcb_comboBoxEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jp_eliminarLayout = new javax.swing.GroupLayout(jp_eliminar);
         jp_eliminar.setLayout(jp_eliminarLayout);
@@ -156,9 +161,21 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel2.setText("Tipo");
 
-        jcb_comboBoxEditar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcb_comboBoxEditar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Docente" }));
 
         jcb_editarUsuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcb_editarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcb_editarUsuariosActionPerformed(evt);
+            }
+        });
+
+        btn_actualizarDatos.setText("Actualizar");
+        btn_actualizarDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_actualizarDatosMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jp_editarLayout = new javax.swing.GroupLayout(jp_editar);
         jp_editar.setLayout(jp_editarLayout);
@@ -177,7 +194,10 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jcb_comboBoxEditar, 0, 205, Short.MAX_VALUE)))
                     .addGroup(jp_editarLayout.createSequentialGroup()
                         .addGap(205, 205, 205)
-                        .addComponent(jcb_editarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jcb_editarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jp_editarLayout.createSequentialGroup()
+                        .addGap(217, 217, 217)
+                        .addComponent(btn_actualizarDatos)))
                 .addContainerGap(216, Short.MAX_VALUE))
         );
         jp_editarLayout.setVerticalGroup(
@@ -193,7 +213,9 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jp_editarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jcb_comboBoxEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addComponent(btn_actualizarDatos)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         tabPane_pestanas.addTab("Editar", jp_editar);
@@ -203,6 +225,11 @@ public class Principal extends javax.swing.JFrame {
         lbl_tipo.setText("Tipo");
 
         jcb_comboBoxMostrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcb_comboBoxMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcb_comboBoxMostrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jp_mostrarLayout = new javax.swing.GroupLayout(jp_mostrar);
         jp_mostrar.setLayout(jp_mostrarLayout);
@@ -222,9 +249,9 @@ public class Principal extends javax.swing.JFrame {
                                 .addGap(93, 93, 93)
                                 .addComponent(lbl_mostrarNombre))))
                     .addGroup(jp_mostrarLayout.createSequentialGroup()
-                        .addGap(101, 101, 101)
+                        .addGap(131, 131, 131)
                         .addComponent(jcb_comboBoxMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(294, Short.MAX_VALUE))
+                .addContainerGap(264, Short.MAX_VALUE))
         );
         jp_mostrarLayout.setVerticalGroup(
             jp_mostrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,9 +264,9 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jp_mostrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_tipo)
                     .addComponent(lbl_mostrarTipo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addGap(62, 62, 62)
                 .addComponent(jcb_comboBoxMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         tabPane_pestanas.addTab("Mostrar", jp_mostrar);
@@ -293,8 +320,11 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarMouseClicked
-//     tabPane_pestanas.setSelectedIndex(3); llevar a la pestaña 3
-     jp_login.setVisible(true);
+       DefaultComboBoxModel modelo = (DefaultComboBoxModel) jcb_comboBoxEliminar.getModel();
+       int seleccionado = jcb_comboBoxEliminar.getSelectedIndex();
+       modelo.removeElementAt(seleccionado);
+       JOptionPane.showMessageDialog(null,"Usuario Eliminado!");
+       
     }//GEN-LAST:event_btn_eliminarMouseClicked
 
     private void btn_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseClicked
@@ -337,6 +367,35 @@ public class Principal extends javax.swing.JFrame {
        modelo.addElement(nuevapersona);
     }//GEN-LAST:event_jButton2MouseClicked
 
+    private void jcb_comboBoxEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_comboBoxEliminarActionPerformed
+        
+    }//GEN-LAST:event_jcb_comboBoxEliminarActionPerformed
+
+    private void jcb_comboBoxMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_comboBoxMostrarActionPerformed
+//        System.out.println(jcb_comboBoxMostrar.getSelectedIndex());
+        Persona persona = (Persona)jcb_comboBoxMostrar.getSelectedItem();
+        lbl_mostrarNombre.setText(persona.getNombre());
+        lbl_mostrarTipo.setText(persona.getTipo()+"");
+    }//GEN-LAST:event_jcb_comboBoxMostrarActionPerformed
+
+    private void jcb_editarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_editarUsuariosActionPerformed
+    Persona persona = (Persona)jcb_editarUsuarios.getSelectedItem();
+    txt_editNombre.setText(persona.getNombre());
+    jcb_comboBoxEditar.setSelectedIndex(persona.getTipo());
+    
+        
+    }//GEN-LAST:event_jcb_editarUsuariosActionPerformed
+
+    private void btn_actualizarDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_actualizarDatosMouseClicked
+        Persona persona = (Persona)jcb_editarUsuarios.getSelectedItem();
+        String nombre = txt_editNombre.getText();
+        int tipo  = jcb_comboBoxEditar.getSelectedIndex();
+        persona.setNombre(nombre);
+        persona.setTipo(tipo);
+        JOptionPane.showMessageDialog(null,"Informcion actualizada");
+        
+    }//GEN-LAST:event_btn_actualizarDatosMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -373,6 +432,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_actualizarDatos;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_login;
     private javax.swing.JButton jButton2;
