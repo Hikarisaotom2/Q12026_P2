@@ -4,7 +4,10 @@
  */
 package clase_02032026;
 
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.DefaultListModel;
+import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -45,6 +48,18 @@ public class Principal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+        lbl_texto = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txt_contenido = new javax.swing.JTextField();
+        btn_colorTexto = new javax.swing.JButton();
+        txt_tamano = new javax.swing.JTextField();
+        jcb_estilo = new javax.swing.JComboBox<>();
+        btn_guardarContenido = new javax.swing.JButton();
+        btn_guardarTamano = new javax.swing.JButton();
+        btn_cambiarColorbackground = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -173,15 +188,114 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Arbol", jPanel3);
 
+        lbl_texto.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
+        lbl_texto.setText("jLabel3");
+        lbl_texto.setOpaque(true);
+
+        jLabel3.setText("Contenido");
+
+        jLabel4.setText("Color");
+
+        jLabel5.setText("Tamano");
+
+        jLabel6.setText("Estilo");
+
+        btn_colorTexto.setText("Color Texto");
+        btn_colorTexto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_colorTextoMouseClicked(evt);
+            }
+        });
+
+        jcb_estilo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Normal", "Negrita", "Italica", "Subrayado" }));
+
+        btn_guardarContenido.setText("Guardar");
+        btn_guardarContenido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_guardarContenidoMouseClicked(evt);
+            }
+        });
+
+        btn_guardarTamano.setText("Guardar");
+        btn_guardarTamano.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_guardarTamanoMouseClicked(evt);
+            }
+        });
+
+        btn_cambiarColorbackground.setText("Color background");
+        btn_cambiarColorbackground.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_cambiarColorbackgroundMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 664, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(236, 236, 236)
+                        .addComponent(lbl_texto, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(27, 27, 27)
+                                .addComponent(btn_colorTexto))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(30, 30, 30)
+                                .addComponent(txt_contenido, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_guardarContenido)
+                            .addComponent(btn_cambiarColorbackground)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_guardarTamano)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGap(49, 49, 49)
+                                        .addComponent(jcb_estilo, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txt_tamano, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(294, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 295, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(lbl_texto)
+                .addGap(53, 53, 53)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txt_contenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_guardarContenido))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(btn_colorTexto)
+                    .addComponent(btn_cambiarColorbackground))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_tamano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(btn_guardarTamano))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jcb_estilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Texto", jPanel4);
@@ -231,14 +345,38 @@ public class Principal extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
       int index = jl_listaPersonas.getSelectedIndex();
       if(index==-1){
-               JOptionPane.showMessageDialog(this, "Debe seleccionar un elementos antes de poderf realizar esta accion");
+           JOptionPane.showMessageDialog(this, "Debe seleccionar un elementos antes de poderf realizar esta accion");
       }else{
           DefaultListModel modelo = (DefaultListModel)jl_listaPersonas.getModel();
-       modelo.remove(index); 
+          modelo.remove(index);
         JOptionPane.showMessageDialog(this, "Elemento eliminado");
       }
       
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void btn_guardarContenidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarContenidoMouseClicked
+//       String texto = txt_contenido.getText();
+//       lbl_texto.setText(texto);
+        lbl_texto.setText(txt_contenido.getText());
+    }//GEN-LAST:event_btn_guardarContenidoMouseClicked
+
+    private void btn_colorTextoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_colorTextoMouseClicked
+       Color seleccionado = JColorChooser.showDialog(null, "Seeleccione un color para el texto", Color.GREEN);
+       lbl_texto.setForeground(seleccionado);
+        
+    }//GEN-LAST:event_btn_colorTextoMouseClicked
+
+    private void btn_cambiarColorbackgroundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cambiarColorbackgroundMouseClicked
+           Color seleccionado = JColorChooser.showDialog(null, "Seeleccione un color para el texto", Color.GREEN);
+            lbl_texto.setBackground(seleccionado);
+    }//GEN-LAST:event_btn_cambiarColorbackgroundMouseClicked
+
+    private void btn_guardarTamanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarTamanoMouseClicked
+       int tamano = Integer.parseInt(txt_tamano.getText());
+       Font vieja = lbl_texto.getFont();
+       Font nueva = new Font(vieja.getFamily(), vieja.getStyle(),tamano);
+        lbl_texto.setFont(nueva);
+    }//GEN-LAST:event_btn_guardarTamanoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -276,19 +414,31 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_cambiarColorbackground;
+    private javax.swing.JButton btn_colorTexto;
+    private javax.swing.JButton btn_guardarContenido;
+    private javax.swing.JButton btn_guardarTamano;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JComboBox<String> jcb_estilo;
     private javax.swing.JList<String> jl_listaPersonas;
     private javax.swing.JPanel jp_agregar;
     private javax.swing.JLabel lbl_nombreSeleccionado;
+    private javax.swing.JLabel lbl_texto;
     private javax.swing.JTextField txt_agregarNombre;
+    private javax.swing.JTextField txt_contenido;
+    private javax.swing.JTextField txt_tamano;
     // End of variables declaration//GEN-END:variables
 }
