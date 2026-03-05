@@ -6,6 +6,7 @@ package clase_02032026;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseEvent;
 import javax.swing.DefaultListModel;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
@@ -37,6 +38,11 @@ public class Principal extends javax.swing.JFrame {
         jd_pantalla = new javax.swing.JDialog();
         lbl_dialog = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jpm_menuEmergente = new javax.swing.JPopupMenu();
+        jmi_limpiar = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jpm_menu2 = new javax.swing.JPopupMenu();
+        jMenu2 = new javax.swing.JMenu();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jp_agregar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -108,6 +114,15 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(179, Short.MAX_VALUE))
         );
 
+        jmi_limpiar.setText("Limpiar");
+        jpm_menuEmergente.add(jmi_limpiar);
+
+        jMenuItem4.setText("jMenuItem4");
+        jpm_menuEmergente.add(jMenuItem4);
+
+        jMenu2.setText("jMenu2");
+        jpm_menu2.add(jMenu2);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Nombre");
@@ -149,6 +164,13 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Agregar", jp_agregar);
 
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
+
+        jl_listaPersonas.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 3, 10)); // NOI18N
         jl_listaPersonas.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -204,7 +226,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(lbl_nombreSeleccionado))
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Lista", jPanel1);
@@ -446,16 +468,29 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jl_listaPersonasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_listaPersonasMouseClicked
+        
+        switch (evt.getButton()) {
+            case MouseEvent.BUTTON1: //izquierdo
+                    DefaultListModel modelo = (DefaultListModel)jl_listaPersonas.getModel();
+                    int index = jl_listaPersonas.getSelectedIndex();
+                    Object seleccionado = modelo.getElementAt(index);
+
+                   Persona p = (Persona)seleccionado;
+                  lbl_nombreSeleccionado.setText(p.getNombre());
+                break;
+            case MouseEvent.BUTTON2:// scroll 
+                System.out.println("Scroll");
+                break;
+            case MouseEvent.BUTTON3: //derecho
+                jpm_menuEmergente.show(jl_listaPersonas, evt.getX(), evt.getY());
+                break;
+                
+        }
 // Ejemplo obtener el objeto directamente 
 //       Object seleccionado = jl_listaPersonas.getSelectedValue();
        
 // Ejemplo, obtener el objeto usando el index 
-       DefaultListModel modelo = (DefaultListModel)jl_listaPersonas.getModel();
-       int index = jl_listaPersonas.getSelectedIndex();
-       Object seleccionado = modelo.getElementAt(index);
-       
-      Persona p = (Persona)seleccionado;
-     lbl_nombreSeleccionado.setText(p.getNombre());
+
 
     }//GEN-LAST:event_jl_listaPersonasMouseClicked
 
@@ -545,6 +580,24 @@ public class Principal extends javax.swing.JFrame {
                lbl_texto.setFont(nueva);
     }//GEN-LAST:event_jButton4MouseClicked
 
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+              
+        switch (evt.getButton()) {
+            case MouseEvent.BUTTON1: //izquierdo
+                    jpm_menu2.show(jl_listaPersonas, evt.getX(), evt.getY());
+                break;
+            case MouseEvent.BUTTON2:// scroll 
+                System.out.println("Scroll");
+                break;
+            case MouseEvent.BUTTON3: //derecho
+                jmi_limpiar.setEnabled(false);
+                jmi_limpiar.setVisible(false);
+                jpm_menuEmergente.show(jl_listaPersonas, evt.getX(), evt.getY());
+                break;
+                
+        }
+    }//GEN-LAST:event_jPanel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -598,9 +651,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -615,7 +670,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jm_abrir;
     private javax.swing.JMenu jm_exportar;
     private javax.swing.JMenuBar jmb_menuPrincipal;
+    private javax.swing.JMenuItem jmi_limpiar;
     private javax.swing.JPanel jp_agregar;
+    private javax.swing.JPopupMenu jpm_menu2;
+    private javax.swing.JPopupMenu jpm_menuEmergente;
     private javax.swing.JLabel lbl_dialog;
     private javax.swing.JLabel lbl_nombreSeleccionado;
     private javax.swing.JLabel lbl_texto;
