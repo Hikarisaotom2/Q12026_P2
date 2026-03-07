@@ -7,9 +7,11 @@ package clase_02032026;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,7 +25,15 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         DefaultListModel modeloLista = new DefaultListModel();
-        jl_listaPersonas.setModel(modeloLista);      
+        jl_listaPersonas.setModel(modeloLista); 
+        
+        DefaultTableModel modeloTabla = new DefaultTableModel();
+        jt_tablaInformacion.setModel(modeloTabla);
+        
+        modeloTabla.addColumn("Nombre");
+        modeloTabla.addColumn("Apellido");
+        modeloTabla.addColumn("Tipo");
+        
     }
 
     /**
@@ -48,13 +58,16 @@ public class Principal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txt_agregarNombre = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        txt_apellido = new javax.swing.JTextField();
+        jc_tipo = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jl_listaPersonas = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
         lbl_nombreSeleccionado = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         lbl_texto = new javax.swing.JLabel();
@@ -72,6 +85,19 @@ public class Principal extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txt_fuente = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jt_tablaInformacion = new javax.swing.JTable();
+        btn_agregarColumna = new javax.swing.JButton();
+        lbl_nombreTabla = new javax.swing.JLabel();
+        lbl_apellidoTabla = new javax.swing.JLabel();
+        lbl_tipoTabla = new javax.swing.JLabel();
+        lbl_columna = new javax.swing.JLabel();
+        lbl_fila = new javax.swing.JLabel();
+        btn_eliminar = new javax.swing.JButton();
+        btn_editarTabla = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jmb_menuPrincipal = new javax.swing.JMenuBar();
         jm_abrir = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -134,6 +160,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setText("Apellido");
+
+        jc_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Usuario Regular" }));
+
+        jLabel9.setText("Tipo");
+
         javax.swing.GroupLayout jp_agregarLayout = new javax.swing.GroupLayout(jp_agregar);
         jp_agregar.setLayout(jp_agregarLayout);
         jp_agregarLayout.setHorizontalGroup(
@@ -141,13 +173,19 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jp_agregarLayout.createSequentialGroup()
                 .addGroup(jp_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jp_agregarLayout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(jLabel1)
-                        .addGap(72, 72, 72)
-                        .addComponent(txt_agregarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(232, 232, 232)
+                        .addComponent(jButton1))
                     .addGroup(jp_agregarLayout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addComponent(jButton1)))
+                        .addGap(79, 79, 79)
+                        .addGroup(jp_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
+                        .addGap(71, 71, 71)
+                        .addGroup(jp_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jc_tipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txt_agregarNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                            .addComponent(txt_apellido))))
                 .addContainerGap(165, Short.MAX_VALUE))
         );
         jp_agregarLayout.setVerticalGroup(
@@ -157,9 +195,17 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jp_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txt_agregarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65)
+                .addGap(18, 18, 18)
+                .addGroup(jp_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(jp_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jc_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addGap(31, 31, 31)
                 .addComponent(jButton1)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Agregar", jp_agregar);
@@ -230,19 +276,6 @@ public class Principal extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Lista", jPanel1);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 684, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Tabla", jPanel2);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -403,6 +436,122 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Texto", jPanel4);
 
+        jt_tablaInformacion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jt_tablaInformacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_tablaInformacionMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jt_tablaInformacion);
+
+        btn_agregarColumna.setText("Agregar Columna");
+        btn_agregarColumna.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_agregarColumnaMouseClicked(evt);
+            }
+        });
+
+        lbl_nombreTabla.setText("jLabel10");
+
+        lbl_apellidoTabla.setText("jLabel11");
+
+        lbl_tipoTabla.setText("jLabel12");
+
+        lbl_columna.setText("jLabel10");
+
+        lbl_fila.setText("jLabel11");
+
+        btn_eliminar.setText("Eliminar fila ");
+        btn_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_eliminarMouseClicked(evt);
+            }
+        });
+
+        btn_editarTabla.setText("Editar Fila");
+        btn_editarTabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_editarTablaMouseClicked(evt);
+            }
+        });
+
+        jLabel10.setText("fila");
+
+        jLabel11.setText("columna");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbl_nombreTabla)
+                                    .addComponent(btn_eliminar))
+                                .addGap(129, 129, 129)
+                                .addComponent(lbl_apellidoTabla))
+                            .addComponent(btn_editarTabla))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_tipoTabla, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_agregarColumna, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(lbl_fila)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lbl_columna)
+                                .addGap(0, 17, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel11)
+                                .addGap(26, 26, 26)))))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_nombreTabla)
+                    .addComponent(lbl_apellidoTabla)
+                    .addComponent(lbl_tipoTabla))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11))
+                .addGap(13, 13, 13)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_agregarColumna)
+                    .addComponent(btn_editarTabla)
+                    .addComponent(btn_eliminar)
+                    .addComponent(lbl_fila)
+                    .addComponent(lbl_columna))
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Tabla", jPanel2);
+
         jm_abrir.setText("Abrir");
 
         jMenu1.setText("SubMenu");
@@ -444,9 +593,9 @@ public class Principal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(90, 90, 90)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -461,10 +610,25 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
       String nombre = txt_agregarNombre.getText();
-      Persona p = new Persona(nombre);
+      String apellido = txt_apellido.getText();
+      String tipo = jc_tipo.getSelectedItem().toString();
+      
+      Persona p = new Persona(nombre,apellido,tipo);
+      
+      // agregando a la lista
       DefaultListModel modelo = (DefaultListModel)jl_listaPersonas.getModel();
       modelo.addElement(p);
-      JOptionPane.showMessageDialog(this, "Objeto agregado exitosamente");
+      
+      //agregar a la tabla
+     DefaultTableModel modeloTabla = (DefaultTableModel)jt_tablaInformacion.getModel();
+     Object [] elementos =  {p.getNombre(),p.getApellido(),p.getTipo()};
+     modeloTabla.addRow(elementos);
+      
+      // agregar al arbol 
+      
+      
+      
+       JOptionPane.showMessageDialog(this, "Objeto agregado exitosamente");
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jl_listaPersonasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_listaPersonasMouseClicked
@@ -598,6 +762,50 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jPanel1MouseClicked
 
+    private void btn_agregarColumnaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_agregarColumnaMouseClicked
+         DefaultTableModel modeloTabla = (DefaultTableModel)jt_tablaInformacion.getModel();
+        
+        modeloTabla.addColumn("NuevaColumna!");
+    }//GEN-LAST:event_btn_agregarColumnaMouseClicked
+
+    private void jt_tablaInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_tablaInformacionMouseClicked
+        int fila = jt_tablaInformacion.getSelectedRow();
+        int columna = jt_tablaInformacion.getSelectedColumn();
+        lbl_columna.setText(columna+"");
+        lbl_fila.setText(fila+"");
+        
+        String valorSeleccionado = jt_tablaInformacion.getValueAt(fila, columna).toString();
+       
+        ArrayList<javax.swing.JLabel> etiquetas = new  ArrayList<javax.swing.JLabel>();
+        etiquetas.add(lbl_nombreTabla);
+        etiquetas.add(lbl_apellidoTabla);
+        etiquetas.add(lbl_tipoTabla);
+        
+        lbl_nombreTabla.setText(valorSeleccionado);
+         DefaultTableModel modeloTabla = (DefaultTableModel)jt_tablaInformacion.getModel();
+         for (int i = 0; i < modeloTabla.getColumnCount(); i++) {
+              String valorTemp = jt_tablaInformacion.getValueAt(fila, i).toString();
+              // TODO: evitar que esta linea de outOfBounce cuando agregamos una columna adicional
+              etiquetas.get(i).setText(valorTemp);
+        }
+    }//GEN-LAST:event_jt_tablaInformacionMouseClicked
+
+    private void btn_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarMouseClicked
+         int fila = jt_tablaInformacion.getSelectedRow();
+          DefaultTableModel modeloTabla = (DefaultTableModel)jt_tablaInformacion.getModel();
+          modeloTabla.removeRow(fila);
+          
+    }//GEN-LAST:event_btn_eliminarMouseClicked
+
+    private void btn_editarTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_editarTablaMouseClicked
+      int fila = jt_tablaInformacion.getSelectedRow();
+      int columna = jt_tablaInformacion.getSelectedColumn();
+      
+       DefaultTableModel modeloTabla = (DefaultTableModel)jt_tablaInformacion.getModel();
+       modeloTabla.setValueAt("NUEVO VALOR!", fila, columna);
+        
+    }//GEN-LAST:event_btn_editarTablaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -609,7 +817,7 @@ public class Principal extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -634,8 +842,11 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_agregarColumna;
     private javax.swing.JButton btn_cambiarColorbackground;
     private javax.swing.JButton btn_colorTexto;
+    private javax.swing.JButton btn_editarTabla;
+    private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardarContenido;
     private javax.swing.JButton btn_guardarTamano;
     private javax.swing.JButton jButton1;
@@ -644,12 +855,16 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
@@ -662,8 +877,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JComboBox<String> jc_tipo;
     private javax.swing.JComboBox<String> jcb_estilo;
     private javax.swing.JDialog jd_pantalla;
     private javax.swing.JList<String> jl_listaPersonas;
@@ -674,10 +891,17 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jp_agregar;
     private javax.swing.JPopupMenu jpm_menu2;
     private javax.swing.JPopupMenu jpm_menuEmergente;
+    private javax.swing.JTable jt_tablaInformacion;
+    private javax.swing.JLabel lbl_apellidoTabla;
+    private javax.swing.JLabel lbl_columna;
     private javax.swing.JLabel lbl_dialog;
+    private javax.swing.JLabel lbl_fila;
     private javax.swing.JLabel lbl_nombreSeleccionado;
+    private javax.swing.JLabel lbl_nombreTabla;
     private javax.swing.JLabel lbl_texto;
+    private javax.swing.JLabel lbl_tipoTabla;
     private javax.swing.JTextField txt_agregarNombre;
+    private javax.swing.JTextField txt_apellido;
     private javax.swing.JTextField txt_contenido;
     private javax.swing.JTextField txt_fuente;
     private javax.swing.JTextField txt_tamano;
