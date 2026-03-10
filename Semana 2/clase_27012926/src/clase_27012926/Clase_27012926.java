@@ -14,7 +14,10 @@ public class Clase_27012926 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+      holaMundo();
     }
     
+    public static void holaMundo(){
+        
+    }
 }
