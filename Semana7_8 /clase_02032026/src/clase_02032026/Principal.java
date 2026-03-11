@@ -12,6 +12,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -33,6 +35,16 @@ public class Principal extends javax.swing.JFrame {
         modeloTabla.addColumn("Nombre");
         modeloTabla.addColumn("Apellido");
         modeloTabla.addColumn("Tipo");
+        
+        DefaultMutableTreeNode raiz = new DefaultMutableTreeNode("Personas");
+        DefaultMutableTreeNode administradores = new DefaultMutableTreeNode("Administradores");
+        DefaultMutableTreeNode regulares = new DefaultMutableTreeNode("Usuarios regulares");
+        raiz.add(administradores);
+        raiz.add(regulares);
+        DefaultTreeModel modeloArbol  = new DefaultTreeModel(raiz);
+        jt_arbolPersonas.setModel(modeloArbol);
+        
+                
         
     }
 
@@ -70,7 +82,7 @@ public class Principal extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        jt_arbolPersonas = new javax.swing.JTree();
         jPanel4 = new javax.swing.JPanel();
         lbl_texto = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -279,7 +291,7 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Lista", jPanel1);
 
-        jScrollPane3.setViewportView(jTree1);
+        jScrollPane3.setViewportView(jt_arbolPersonas);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -635,6 +647,22 @@ public class Principal extends javax.swing.JFrame {
      modeloTabla.addRow(elementos);
       
       // agregar al arbol 
+      DefaultTreeModel modeloArbol = (DefaultTreeModel) jt_arbolPersonas.getModel();
+       // obtener la raiz 
+       DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
+       // creamos el nuevo nodo
+       DefaultMutableTreeNode  nuevoNodo = new DefaultMutableTreeNode(p);
+        if (jc_tipo.getSelectedIndex() == 0 ) { //administrador
+         DefaultMutableTreeNode nodoAdministrador =  (DefaultMutableTreeNode) raiz.getChildAt(0);
+         nodoAdministrador.add(nuevoNodo);
+//         ((DefaultMutableTreeNode)raiz.getChildAt(0)).add(nuevoNodo);
+        }else{ // usuario regular 
+            DefaultMutableTreeNode nodoRegulares =  (DefaultMutableTreeNode) raiz.getChildAt(1);
+            nodoRegulares.add(nuevoNodo);
+        }
+       // recargar el modelo 
+       modeloArbol.reload();
+       
       
       
       
@@ -891,7 +919,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTree jTree1;
     private javax.swing.JComboBox<String> jc_tipo;
     private javax.swing.JComboBox<String> jcb_estilo;
     private javax.swing.JDialog jd_pantalla;
@@ -903,6 +930,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jp_agregar;
     private javax.swing.JPopupMenu jpm_menu2;
     private javax.swing.JPopupMenu jpm_menuEmergente;
+    private javax.swing.JTree jt_arbolPersonas;
     private javax.swing.JTable jt_tablaInformacion;
     private javax.swing.JLabel lbl_apellidoTabla;
     private javax.swing.JLabel lbl_columna;
