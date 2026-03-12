@@ -83,6 +83,11 @@ public class Principal extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jt_arbolPersonas = new javax.swing.JTree();
+        lbl_arbolNombre = new javax.swing.JLabel();
+        lbl_arbolApellido = new javax.swing.JLabel();
+        lbl_arbolTipo = new javax.swing.JLabel();
+        btn_eliminarArbol = new javax.swing.JButton();
+        lbl_advertencia = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         lbl_texto = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -291,7 +296,27 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Lista", jPanel1);
 
+        jt_arbolPersonas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_arbolPersonasMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jt_arbolPersonas);
+
+        lbl_arbolNombre.setText("jLabel12");
+
+        lbl_arbolApellido.setText("jLabel12");
+
+        lbl_arbolTipo.setText("jLabel12");
+
+        btn_eliminarArbol.setText("Eliminar");
+        btn_eliminarArbol.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_eliminarArbolMouseClicked(evt);
+            }
+        });
+
+        lbl_advertencia.setText("jLabel12");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -300,14 +325,42 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(119, 119, 119)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_arbolNombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_arbolApellido, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_arbolTipo, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(94, 94, 94))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(lbl_advertencia, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(28, Short.MAX_VALUE))))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(194, 194, 194)
+                .addComponent(btn_eliminarArbol)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(lbl_arbolNombre)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_arbolApellido)
+                        .addGap(30, 30, 30)
+                        .addComponent(lbl_arbolTipo)
+                        .addGap(30, 30, 30)
+                        .addComponent(lbl_advertencia)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(btn_eliminarArbol)
+                .addGap(19, 19, 19))
         );
 
         jTabbedPane1.addTab("Arbol", jPanel3);
@@ -844,6 +897,59 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_editarTablaMouseClicked
 
+    private void jt_arbolPersonasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_arbolPersonasMouseClicked
+        // identificar el elemento que seleccionamos. 
+        DefaultMutableTreeNode nodoSeleccionado = (DefaultMutableTreeNode)jt_arbolPersonas.getSelectionPath().getLastPathComponent();
+        
+        // Raiz  -> primer nodo 
+        // no tiene padre 
+        Boolean isRoot = nodoSeleccionado.getParent() == null; 
+        // Hojas -> los ultimos nodos / no tienen hijos 
+        // tiene padre y tiene hijos 
+        Boolean isNode = nodoSeleccionado.getChildCount()>0 ; 
+        // Nodo  ->  tiene hijos 
+        // no tiene hijos 
+        Boolean isLeaf = nodoSeleccionado.getChildCount()==0; 
+        
+        if (isRoot) {
+            JOptionPane.showMessageDialog(this, "El nodo seleccionado es la raiz");
+            lbl_advertencia.setText("No podemos cargar informacion");
+        }else if(isNode){
+             JOptionPane.showMessageDialog(this, "El nodo seleccionado es un nodo");
+             lbl_advertencia.setText("No podemos cargar informacion");
+        }else if(isLeaf){
+            //NOTA: Terminar y validar que el objeto que hay dentro del nodo si sea una persona
+             JOptionPane.showMessageDialog(this, "El nodo seleccionado es una hoja");
+             //Obtener el objeto del nodo seleccionado
+            Persona personaSeleccionada = (Persona)nodoSeleccionado.getUserObject();
+            lbl_arbolNombre.setText(personaSeleccionada.getNombre());
+            lbl_arbolApellido.setText(personaSeleccionada.getApellido());
+            lbl_arbolTipo.setText(personaSeleccionada.getTipo());
+        }else{
+            JOptionPane.showMessageDialog(this, "Elemento desconocido seleccionado ");
+        }
+        
+        
+    }//GEN-LAST:event_jt_arbolPersonasMouseClicked
+
+    private void btn_eliminarArbolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_eliminarArbolMouseClicked
+       //obtener el nodo seleccionado
+        // identificar el elemento que seleccionamos. 
+        DefaultMutableTreeNode nodoSeleccionado = (DefaultMutableTreeNode)jt_arbolPersonas.getSelectionPath().getLastPathComponent();
+        DefaultTreeModel modeloArbol = (DefaultTreeModel)jt_arbolPersonas.getModel();
+        
+        if(nodoSeleccionado.getParent()!=null){
+//            NOTA: Validar que no podamos eliminar los nodos de usuarios administradores y usuarios regulares 
+            DefaultMutableTreeNode padreDelNodo = (DefaultMutableTreeNode)nodoSeleccionado.getParent();
+            padreDelNodo.remove(nodoSeleccionado);
+            modeloArbol.reload();
+            JOptionPane.showMessageDialog(this, "Nodo eliminado exitosamente");
+        }else{
+            JOptionPane.showMessageDialog(this, "El nodo seleccionado es la raiz, no se puede eliminar");
+        }
+        
+    }//GEN-LAST:event_btn_eliminarArbolMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -885,6 +991,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btn_colorTexto;
     private javax.swing.JButton btn_editarTabla;
     private javax.swing.JButton btn_eliminar;
+    private javax.swing.JButton btn_eliminarArbol;
     private javax.swing.JButton btn_guardarContenido;
     private javax.swing.JButton btn_guardarTamano;
     private javax.swing.JButton jButton1;
@@ -932,7 +1039,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jpm_menuEmergente;
     private javax.swing.JTree jt_arbolPersonas;
     private javax.swing.JTable jt_tablaInformacion;
+    private javax.swing.JLabel lbl_advertencia;
     private javax.swing.JLabel lbl_apellidoTabla;
+    private javax.swing.JLabel lbl_arbolApellido;
+    private javax.swing.JLabel lbl_arbolNombre;
+    private javax.swing.JLabel lbl_arbolTipo;
     private javax.swing.JLabel lbl_columna;
     private javax.swing.JLabel lbl_dialog;
     private javax.swing.JLabel lbl_fila;
