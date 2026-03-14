@@ -5,10 +5,21 @@
 package clase_12032026;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +32,9 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+//        personas.add(new Persona("Maria","Jose","SISTEMAS"));
+//        personas.add(new Persona("Roussy","Badie","SISTEMAS"));
+//        personas.add(new Persona("Lila","Jose","SISTEMAS"));
     }
 
     /**
@@ -32,11 +46,16 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tb_principal = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_contenido = new javax.swing.JTextArea();
         btn_cargarinfo = new javax.swing.JButton();
+        btn_guardar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,18 +70,25 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        btn_guardar.setText("Guardar Archivo");
+        btn_guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_guardarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(210, 210, 210)
-                        .addComponent(btn_cargarinfo)))
+                        .addComponent(btn_cargarinfo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -70,12 +96,58 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_cargarinfo)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_cargarinfo)
+                    .addComponent(btn_guardar)))
         );
 
-        jTabbedPane1.addTab("Cargar", jPanel1);
+        tb_principal.addTab("Cargar", jPanel1);
+
+        jButton1.setText("Guardar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jButton2.setText("Abrir");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
+        jButton3.setText("jButton3");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(179, 179, 179)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(275, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(91, 91, 91))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(jButton2)
+                .addGap(3, 3, 3)
+                .addComponent(jButton3)
+                .addGap(25, 25, 25)
+                .addComponent(jButton1)
+                .addContainerGap(141, Short.MAX_VALUE))
+        );
+
+        tb_principal.addTab("Archivos Bionarios ", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,14 +155,14 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(tb_principal)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tb_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -116,11 +188,17 @@ public class Principal extends javax.swing.JFrame {
                     System.out.println(linea);
                     txt_contenido.append(linea+"\n");
                     linea = br.readLine();
-                    //Completar: ir creando objetos del tipo persona cxon la informacion que tenemos del archivo de texto
-                    // agregar esos objetos a un combobox
-                    // nombre,apellido,profesion
-                    // nombre,apellido,id,[equipo1;equipo2;equipo3]
-                    
+                    //nombre,apellido,carrera
+                    String[] datos = linea.split(","); // Parseo
+                   if(datos.length>=3){
+                       String nombre = datos[0];
+                        String apellido= datos[1];
+                        String carrera = datos[2];
+                        Persona p = new Persona(nombre,apellido,carrera);
+                        personas.add(p);
+                        
+                   }
+
                 }
                 //cerrando el archivo y el buffer
                 br.close();
@@ -135,6 +213,82 @@ public class Principal extends javax.swing.JFrame {
         }
               
     }//GEN-LAST:event_btn_cargarinfoMouseClicked
+
+    private void btn_guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarMouseClicked
+       JFileChooser filechooser = new JFileChooser();
+       int resultado = filechooser.showSaveDialog(this);
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File selecionado = filechooser.getSelectedFile();
+           try {
+               /*
+               Tipos de escritura del archivo:
+               Appened (true) -> se mantiene el contenido original y solamente agregamos el nuevo contenido al final del archivo
+               Override (false)-> borrar el contenido anterior y reemplazarlo con el nuevo
+               */
+               // Nota: por defecto si no especificamos el tipo de escritura, java utiliza override
+               FileWriter fw = new FileWriter(selecionado,true);
+               BufferedWriter bw = new BufferedWriter(fw);
+               String contenido = txt_contenido.getText();
+               
+               bw.write("\n"+contenido+"\n");
+               
+               bw.close();
+               JOptionPane.showMessageDialog(this, "ARCHIVO SALVADO EXITOSAMENTE!");
+           } catch (IOException ex) {
+               System.out.println("Algo salio mal");
+           }
+            
+        }
+       
+    }//GEN-LAST:event_btn_guardarMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+              JFileChooser filechooser = new JFileChooser();
+       int resultado = filechooser.showSaveDialog(this);
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File selecionado = filechooser.getSelectedFile();
+                  try {
+                    FileOutputStream fos = new FileOutputStream(selecionado);
+                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                    oos.writeObject(personas);
+                     JOptionPane.showMessageDialog(this, "ARCHIVO SALVADO EXITOSAMENTE!");
+                    oos.close();
+                  } catch (FileNotFoundException ex) {
+                      System.out.println("Algo salio mal");
+                      System.out.println(ex);
+                  } catch (IOException ex) {
+                      System.out.println("Algo salio mal");
+                      System.out.println(ex);
+                  }
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        JFileChooser filechooser = new JFileChooser();
+       int resultado = filechooser.showOpenDialog(this);
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File selecionado = filechooser.getSelectedFile();
+            try {
+                FileInputStream fis = new FileInputStream(selecionado);
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                Object objetoAlmacenado = ois.readObject();
+                ArrayList<Persona> personas = (ArrayList<Persona>)objetoAlmacenado ;
+                System.out.println(personas);
+                 JOptionPane.showMessageDialog(this, personas);
+                
+                
+            } catch (FileNotFoundException ex) {
+                 System.out.println("Algo salio mal");
+                      System.out.println(ex);
+            } catch (IOException ex) {
+                 System.out.println("Algo salio mal");
+                      System.out.println(ex);
+            } catch (ClassNotFoundException ex) {
+                System.out.println("Algo salio mal");
+                      System.out.println(ex);
+            }
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -170,12 +324,19 @@ public class Principal extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    
+    ArrayList<Persona> personas = new ArrayList<Persona>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cargarinfo;
+    private javax.swing.JButton btn_guardar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane tb_principal;
     private javax.swing.JTextArea txt_contenido;
     // End of variables declaration//GEN-END:variables
 }
